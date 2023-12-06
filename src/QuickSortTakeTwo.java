@@ -29,10 +29,8 @@ public class QuickSortTakeTwo {
             for(int x = low; x <= high; x++){
                 if(m == arr[x]) median = x;
             }
-
             //int median = ThreadLocalRandom.current().nextInt(low, high+1);
-            swap(arr, low, median);
-
+            //swap(arr, low, high);
             int pivot = arr[low];
             int i = low+1;
             for (int j = low +1; j <= high; j++) {
