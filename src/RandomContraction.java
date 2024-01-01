@@ -3,8 +3,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
 
 public class RandomContraction {
     Graph graph;
@@ -19,14 +17,12 @@ public class RandomContraction {
 
     public void setGraph(){
         List<List<Integer>> adjacencyList = new ArrayList<>();
-        StringBuilder builder = new StringBuilder();
         try(BufferedReader br = new BufferedReader(new FileReader("src/kargerMinCut.txt"))) {
             for(String numb; (numb = br.readLine()) != null; ) {
                 String[] array = numb.split("\\s");
                 Integer[] nArray = new Integer[array.length];
-                for(int i = 0; i< array.length; i++){
+                for(int i = 0; i< array.length; i++)
                     nArray[i] = Integer.parseInt(array[i]);
-                }
                 adjacencyList.add(List.of(nArray));
                 int vertex;
                 int count = 0;
@@ -37,7 +33,6 @@ public class RandomContraction {
                         Graph.Edge e = new Graph.Edge(vertex, list.get(j));
                         if(!graph.getEdges().contains(e)){
                             graph.addEdge(vertex, list.get(j));
-                            //builder.append(vertex).append(" ").append(list.get(j)).append(",");
                         }
                     }
                 }
@@ -62,8 +57,6 @@ public class RandomContraction {
     public static void main(String args[]){
         RandomContraction rc = new RandomContraction();
         rc.setGraph();
-        //rc.runMinCut();
-        //System.out.println();
         int x = 0;
         for(int i = 2; i< 1000; i++){
             rc = new RandomContraction();
